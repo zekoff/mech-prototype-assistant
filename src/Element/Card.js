@@ -1,4 +1,4 @@
-/* global game, Phaser */
+/* global game, Phaser, mech */
 
 var Card = function(title, text, prototypeValue, tint) {
     Phaser.Group.call(this, game);
@@ -7,19 +7,20 @@ var Card = function(title, text, prototypeValue, tint) {
     this.cardBackground.height = 150;
     this.cardBackground.width = 100;
     this.cardBackground.inputEnabled = true;
+    var self = this;
     this.cardBackground.events.onInputUp.add(function(){
-        print("clicked card");
+        mech.events.activateCard.dispatch(self);
     }, this);
     this.add(this.cardBackground);
     if (title) {
-        this.title = game.make.text(0,0,title,{font:"10pt Arial",wordWrap:true,wordWrapWidth:100});
+        this.title = game.make.text(2,2,title,{font:"10pt Arial",wordWrap:true,wordWrapWidth:100});
         this.add(this.title);
     }
     if (prototypeValue) this.prototypeValue = prototypeValue;
-    this.modifier = 3;
+    this.modifier = 1;
     if (text) {
         this.textPrototype = text;
-        this.text = game.make.text(0,20,text,{font:"7pt Arial",wordWrap:true,wordWrapWidth:100});
+        this.text = game.make.text(2,30,text,{font:"7pt Arial",wordWrap:true,wordWrapWidth:100});
         this.prepareText();
         this.add(this.text);
     }
@@ -29,6 +30,13 @@ Card.prototype = Object.create(Phaser.Group.prototype);
 Card.constructor = Card;
 Card.prototype.prepareText = function() {
     this.text.setText(this.textPrototype.replace("###", this.prototypeValue * this.modifier));
+};
+Card.prototype.incrementModifer = function(amount) {
+    if (amount) this.modifier += amount;
+    else this.modifier++;
+};
+Card.prototype.resetModifier = function(){
+    this.modifier = 1;
 };
 
 module.exports = Card;

@@ -8,10 +8,16 @@ var Mask = function() {
     this.alpha = 0;
     this.inputEnabled = true;
     this.events.onInputUp.add(function(){
-        print("mask clicked");
+        print("Mask clicked");
     }, this);
 };
 Mask.prototype = Object.create(Phaser.Sprite.prototype);
 Mask.constructor = Mask;
+Mask.prototype.on = function() {
+    this.inputEnabled = true;
+};
+Mask.prototype.off = function() {
+    this.inputEnabled = false;
+};
 
 module.exports = Mask;
