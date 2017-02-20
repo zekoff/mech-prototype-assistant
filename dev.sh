@@ -4,6 +4,6 @@
 #   ./dev.sh
 #
 # Assumes:
-#   Source files live in:   /src
-#   Entry point is:         /src/startup.js
+#   Source directory:   /src
+#   Entry point:        /src/startup.js
 watchify src/startup.js -o bundle.js --verbose --debug
