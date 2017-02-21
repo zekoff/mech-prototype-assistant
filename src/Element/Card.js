@@ -20,7 +20,7 @@ var Card = function(title, text, prototypeValue, tint) {
     this.modifier = 1;
     if (text) {
         this.textPrototype = text;
-        this.text = game.make.text(2,30,text,{font:"7pt Arial",wordWrap:true,wordWrapWidth:100});
+        this.text = game.make.text(2,50,text,{font:"7pt Arial",wordWrap:true,wordWrapWidth:100});
         this.prepareText();
         this.add(this.text);
     }

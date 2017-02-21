@@ -1,9 +1,13 @@
 /* global game, mech, Phaser */
 var Card = require('../Element/Card');
 var Mask = require('../Element/Mask');
+// var deck = require('../Deck/HighNoon');
+// var deck = require('../Deck/Test');
+var deck = require("../Deck/FanTheHammer");
 
 module.exports = {
     create: function(){
+        var i, j, c, temp;
         mech.drawPile = [];
         mech.discardPile = [];
         mech.hand = [];
@@ -18,14 +22,17 @@ module.exports = {
         mech.inputMask.off();
 
         // Build deck from card list, adding to discard pile as they're built
-        var i, j, c;
-        for (i = 0; i < 15; i++) {
-            c = new Card("Card " + i, "Body text for card #" + i +
-                ", and the current dmg is ###",5,0xFFCCCC);
-            c.x = 650;
-            c.y = 400;
-            mech.discardPile.push(c);
-            mech.bottomGroup.addChild(c);
+        var totalCardsInDeck = 0;
+        while (deck.length > 0) {
+            temp = deck.pop();
+            totalCardsInDeck += temp.copies;
+            for (i = 0; i < temp.copies; i++) {
+                c = new Card(temp.title, temp.text, temp.value, temp.tint);
+                c.x = 650;
+                c.y = 400;
+                mech.discardPile.push(c);
+                mech.bottomGroup.addChild(c);
+            }
         }
 
         // Set up and connect events
