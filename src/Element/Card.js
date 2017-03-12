@@ -3,9 +3,10 @@
 var Card = function(title, text, prototypeValue, tint) {
     Phaser.Group.call(this, game);
     game.add.existing(this);
+    this.cardActive = false;
     this.cardBackground = game.make.sprite(0,0,'pix');
-    this.cardBackground.height = 150;
-    this.cardBackground.width = 100;
+    this.cardBackground.height = 210;
+    this.cardBackground.width = 140;
     this.cardBackground.inputEnabled = true;
     var self = this;
     this.cardBackground.events.onInputUp.add(function(){
@@ -13,14 +14,14 @@ var Card = function(title, text, prototypeValue, tint) {
     }, this);
     this.add(this.cardBackground);
     if (title) {
-        this.title = game.make.text(2,2,title,{font:"10pt Arial",wordWrap:true,wordWrapWidth:100});
+        this.title = game.make.text(5,5,title,{font:"13pt Arial",wordWrap:true,wordWrapWidth:130});
         this.add(this.title);
     }
     if (prototypeValue) this.prototypeValue = prototypeValue;
     this.modifier = 1;
     if (text) {
         this.textPrototype = text;
-        this.text = game.make.text(2,50,text,{font:"7pt Arial",wordWrap:true,wordWrapWidth:100});
+        this.text = game.make.text(5,60,text,{font:"10pt Arial",wordWrap:true,wordWrapWidth:130});
         this.prepareText();
         this.add(this.text);
     }
@@ -37,6 +38,9 @@ Card.prototype.incrementModifer = function(amount) {
 };
 Card.prototype.resetModifier = function(){
     this.modifier = 1;
+};
+Card.prototype.moveTo = function(newX,newY){
+    game.tweens.create(this).to({x:newX, y: newY},300,Phaser.Easing.Cubic.InOut,true);
 };
 
 module.exports = Card;
