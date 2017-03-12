@@ -8,6 +8,10 @@ var deck = require("../Deck/Desperado");
 
 module.exports = {
     create: function(){
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+        game.input.onUp.add(function() {
+            game.scale.startFullScreen();
+        });
         var i, j, c, temp;
         mech.drawPile = [];
         mech.discardPile = [];
