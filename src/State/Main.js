@@ -3,7 +3,8 @@ var Card = require('../Element/Card');
 var Mask = require('../Element/Mask');
 // var deck = require('../Deck/HighNoon');
 // var deck = require('../Deck/Test');
-var deck = require("../Deck/FanTheHammer");
+// var deck = require("../Deck/FanTheHammer");
+var deck = require("../Deck/Desperado");
 
 module.exports = {
     create: function(){
@@ -57,6 +58,7 @@ module.exports = {
                 game.world.bringToTop(mech.drawPile[i]);
         });
         (mech.events.draw = new Phaser.Signal()).add(function(){
+            if (mech.hand.length > 4) return;
             print("Drawing card");
             if (mech.drawPile.length < 1) mech.events.reshuffle.dispatch();
             c = mech.drawPile.pop();
