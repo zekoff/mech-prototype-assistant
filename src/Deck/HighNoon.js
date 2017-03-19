@@ -11,11 +11,11 @@ module.exports = [
         text: "Deal 5 damage and disable target enemy component for 1 turn.",
         value: 1,
         tint: 0xFFBBBB,
-        copies: 1
+        copies: 2
     },
     {
         title: "RELOAD",
-        text: "Draw 2 cards.",
+        text: "Gain 2 stacks of Reload.",
         value: 1,
         tint: 0xDDFFDD,
         copies: 2
@@ -39,7 +39,7 @@ module.exports = [
         text: "Move to any range. No cost.",
         value: 1,
         tint: 0xDDDDFF,
-        copies: 1
+        copies: 0
     },
     {
         title: "HIGH NOON",

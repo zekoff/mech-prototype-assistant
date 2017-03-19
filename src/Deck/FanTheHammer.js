@@ -4,7 +4,7 @@ module.exports = [
         text: "Deal 5 damage.",
         value: 1,
         tint: 0xFFDDDD,
-        copies: 5
+        copies: 6
     },
     {
         title: "FAN THE HAMMER",
@@ -35,11 +35,11 @@ module.exports = [
         copies: 2
     },
     {
-        title: "DASH",
-        text: "Move to any range. No cost.",
+        title: "RELOAD",
+        text: "Gain 2 stacks of Reload.",
         value: 1,
         tint: 0xDDDDFF,
-        copies: 2
+        copies: 1
     },
     {
         title: "CORE DUMP",
