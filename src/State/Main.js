@@ -4,7 +4,8 @@ var Mask = require('../Element/Mask');
 // var deck = require('../Deck/HighNoon');
 // var deck = require('../Deck/Test');
 // var deck = require("../Deck/FanTheHammer");
-var deck = require("../Deck/Desperado");
+// var deck = require("../Deck/Desperado");
+var deck = require("../Deck/Simple");
 
 module.exports = {
     create: function(){
